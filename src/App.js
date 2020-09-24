@@ -1,6 +1,7 @@
 import "./App.css";
 import React, {Component} from "react";
-
+import {ToDoBanner} from "./ToDoBanner";
+import 'bootstrap/dist/css/bootstrap.css';
 // function App() {
 //   return (
 //     <div className="App">
@@ -32,10 +33,10 @@ export default class App extends Component {
 
     //React components have a special property called "state".  The "state" is used to define teh state of date (props)
     this.state = {
-      userName = "Kevin Royer",
+      userName: "Kevin Royer",
       todoItems: [
         {action: "Play Trombone", done: false}, 
-        {action: "Clean Trombone", done: false}, 
+        {action: "Clean Trombone", done: true}, 
         {action: "Admire Trombone", done: false}, 
         {action: "Walk Trombone", done: false}, 
         {action: "Put away Trombone", done: false},
@@ -46,6 +47,10 @@ export default class App extends Component {
 
   render = () => 
   <div>
-
+    {/*Features 1 & 2 */}
+    {/*Below is referred to as a react stub */}
+    <ToDoBanner  userName={this.state.userName}
+    todoItems = {this.state.todoItems}
+    />
   </div>;
 } //end of app component
