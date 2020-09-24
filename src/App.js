@@ -51,23 +51,24 @@ export default class App extends Component {
   todoTableRows = (finishedTask) =>
     this.state.todoItems
       .filter((x) => x.done === finishedTask)
-      .map((y) => <ToDoRow 
-      key={y.action} 
-      item={y} 
-      callback={this.toggleToDo}//The callback will be invoked (executed) when everything in <ToDoRow> is finished AND the user clicks the input box
-      />);
+      .map((y) => (
+        <ToDoRow
+          key={y.action}
+          item={y}
+          callback={this.toggleToDo} //The callback will be invoked (executed) when everything in <ToDoRow> is finished AND the user clicks the input box
+        />
+      ));
 
-      //Feature #4
-      //.setState allows the in-memory data to be updated
-      //When setState is invoked, React will make a new object with the changes.  Under the hood, React will compare the new object with the DOM version of the object.  If there is a difference between those 2 objects, then the DOM will get redrawn (NOT a reload) and then we see the changes
-//--------Function to toggle done property to true/false (opposite of what )
-  toggleToDo = (checkedtodoItem) => this.setState(
-    {
-      todoItems: this.state.todoItems.map(
-        x => x.action === checkedtodoItem.action ? {...x, done: !x.done} : x
-      )
-    }
-  );
+  //Feature #4
+  //.setState allows the in-memory data to be updated
+  //When setState is invoked, React will make a new object with the changes.  Under the hood, React will compare the new object with the DOM version of the object.  If there is a difference between those 2 objects, then the DOM will get redrawn (NOT a reload) and then we see the changes
+  //--------Function to toggle done property to true/false (opposite of what )
+  toggleToDo = (checkedtodoItem) =>
+    this.setState({
+      todoItems: this.state.todoItems.map((x) =>
+        x.action === checkedtodoItem.action ? { ...x, done: !x.done } : x
+      ),
+    });
 
   render = () => (
     <div>
@@ -84,6 +85,19 @@ export default class App extends Component {
           <th>Mark Complete</th>
         </thead>
         <tbody>{this.todoTableRows(false)}</tbody>
+      </table>
+
+      <div className="bg-secondary text-white text-center p-2">
+        Feature 8 TBD
+      </div>
+
+      {/*Features 6 & 7 */}
+      <table className="table table-striped table-bordered">
+        <thead>
+          <th>Description</th>
+          <th>Mark Incomplete</th>
+        </thead>
+        <tbody>{this.todoTableRows(true)}</tbody>
       </table>
     </div>
   );
