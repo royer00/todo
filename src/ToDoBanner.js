@@ -10,4 +10,3 @@ export class ToDoBanner extends Component {
       )
       </h4>
 };
-  
